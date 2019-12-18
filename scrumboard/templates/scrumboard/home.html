@@ -13,7 +13,7 @@
         {% verbatim %}
         <div ng-controller="ScrumboardController">
             <div class='list' ng-repeat = "list in data">
-                <h3>{{ list.name }}</h3>
+                <h3 contenteditable="true" ng-model = list.name ng-change="updateListTitle()" >{{ list.name }}</h3>
                 <ul>
                     <li ng-repeat = "card in list.cards">
                         <scrumboard-card></scrumboard-card>
@@ -23,8 +23,10 @@
                     <input type="text" ng-model="new_title" placeholder="New Card Title"/>
                     <input type="text" ng-model="new_description" placeholder="Description"/>
                     <button ng-click="add(list, new_title, new_description)">+</button>
+                    <button ng-click="delete(list)">Delete List</button>
                 </div>
             </div>
+            <button class="circular-button" ng-click="newList()">+</button>
         </div>
         {% endverbatim %}
 

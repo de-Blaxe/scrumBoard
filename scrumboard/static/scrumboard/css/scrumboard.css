@@ -49,3 +49,7 @@ html {
 .controls button {
     flex-basis: auto;
 }
+
+.circular-button{
+    border-radius: 50%
+}

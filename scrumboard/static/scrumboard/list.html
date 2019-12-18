@@ -1,0 +1,14 @@
+<div class="list">
+    <h3>{{ list.name }}</h3>
+    <ul>
+        <li ng-repeat = "card in list.cards">
+            <scrumboard-card></scrumboard-card>
+        </li>
+    </ul>
+    <div class="controls">
+        <input type="text" ng-model="new_title" placeholder="New Card Title"/>
+        <input type="text" ng-model="new_description" placeholder="Description"/>
+        <button ng-click="add(list, new_title, new_description)">+</button>
+        <button ng-click="delete()">Delete</button>
+    </div>
+</div>
