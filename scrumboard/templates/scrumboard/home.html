@@ -12,8 +12,15 @@
     <body ng-app="scrumboard.demo">
         {% verbatim %}
         <div ng-controller="ScrumboardController">
-            <div class='list' ng-repeat = "list in data">
-                <h3 contenteditable="true" ng-model = list.name ng-change="updateListTitle()" >{{ list.name }}</h3>
+            <div class='list' ng-repeat = "list in data" style="position:relative">
+                <div class="flex-title">
+                    <!-- visible -->
+                    <h3 ng-hide="editListName">{{ list.name }}</h3>
+                    <button ng-hide="editListName" ng-click="editListName=true" class="editButton">Edit title</button>
+                    <!-- editing -->
+                    <input ng-show="editListName" type="text" class="transparentInput" ng-model="list.name"/>
+                    <button ng-show="editListName" ng-click="editListName=false; updateListTitle(list)" class="editButton">Save title</button>
+                </div>
                 <ul>
                     <li ng-repeat = "card in list.cards">
                         <scrumboard-card></scrumboard-card>

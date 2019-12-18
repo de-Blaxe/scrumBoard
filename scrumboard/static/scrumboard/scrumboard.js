@@ -35,7 +35,7 @@
 
                     $scope.newList = function() {
                         var list = {
-                            id: 2,
+                            id: $scope.data[$scope.data.length - 1],
                             name: 'New List'
                         };
                         $http.post('/scrumboard/lists/', list)
@@ -48,12 +48,9 @@
                                 );
                     };
 
-                    $scope.updateListTitle = function() {
-                        $http.put('scrumboard/lists/' + $scope.list.id + '/', $scope.list)
-                    };
-
-                    $scope.modelOptions = {
-                        debounce:500
+                    $scope.updateListTitle = function(list) {
+                        $scope.editListName=false;
+                        $http.put('/scrumboard/lists/' + list.id + '/', list)
                     };
 
                     $scope.data = [];
